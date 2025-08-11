@@ -1,5 +1,5 @@
 pool:
-  vmImage: 'ubuntu-latest'
+  vmImage: 'ubuntu-22.04'
 
 variables:
   buildConfiguration: 'Release'
@@ -36,6 +36,12 @@ steps:
     patchVersion: '0'
  
 - task: NuGetAuthenticate@1
+  displayName: 'Authenticate NuGet'
+#   inputs:
+    #forceReinstallCredentialProvider: false # boolean. Reinstall the credential provider even if already installed. Default: false.
+    #nuGetServiceConnections: # string. Service connection credentials for feeds outside this organization.
+
+- task: NuGetCommand@2
   displayName: 'Publish NuGet package'
   inputs:
     command: push
